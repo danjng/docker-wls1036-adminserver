@@ -22,7 +22,7 @@
 # Open a domain template.
 #=======================================================================================
 
-readTemplate("/u01/app/oracle/middleware/wlserver_10.3/common/templates/domains/wls.jar")
+readTemplate("/u02/app/oracle/product/fmw/wlserver_10.3/common/templates/domains/wls.jar")
 
 #=======================================================================================
 # Configure the Administration Server and SSL port.
@@ -58,7 +58,7 @@ cmo.setPassword('weblogic1')
 #=======================================================================================
 
 setOption('OverwriteDomain', 'true')
-writeDomain('/u01/app/oracle/middleware/user_projects/domains/basicWLSSDomain')
+writeDomain('/u02/app/oracle/product/fmw/user_projects/domains/basicWLSSDomain')
 closeTemplate()
 
 #=======================================================================================
