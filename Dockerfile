@@ -1,23 +1,23 @@
-# Version: 0.0.7 Weblogic 10.3.6 Basic Domain and Admin Server
+# Version: 0.0.1 Weblogic 10.3.6 Basic Domain and Admin Server -- snagged from unbc
 # Username: weblogic
 # Password: weblogic1 but set a runtime
 # http://<IP>:7001/console/
-# docker run -d -p <IP>:7001:7001 unbc/weblogic1036adminserver <newpassword>
+# docker run -d -p <IP>:7001:7001 danjng/wls1036-adminserver <newpassword>
 
-FROM unbc/weblogic1036
-MAINTAINER Trevor Fuson "trevor.fuson@unbc.ca"
+FROM danjng/wls1036
+MAINTAINER Daniel Ng "danjng@gmail.com"
 
-ADD basicWLSDomain_AdminServer.py /u01/app/oracle/middleware/wlserver_10.3/common/templates/scripts/wlst/
+ADD basicWLSDomain_AdminServer.py /u02/app/oracle/product/fmw/wlserver_10.3/common/templates/scripts/wlst/
 
-RUN /bin/bash -c "source /u01/app/oracle/middleware/wlserver_10.3/server/bin/setWLSEnv.sh" \
-    && /u01/app/oracle/middleware/wlserver_10.3/common/bin/wlst.sh /u01/app/oracle/middleware/wlserver_10.3/common/templates/scripts/wlst/basicWLSDomain_AdminServer.py
+RUN /bin/bash -c "source /u02/app/oracle/product/fmw/wlserver_10.3/server/bin/setWLSEnv.sh" \
+    && /u02/app/oracle/product/fmw/wlserver_10.3/common/bin/wlst.sh /u02/app/oracle/product/fmw/wlserver_10.3/common/templates/scripts/wlst/basicWLSDomain_AdminServer.py
 
-ADD change_weblogic_password.sh /u01/app/oracle/middleware/
+ADD change_weblogic_password.sh /u02/app/oracle/product/fmw/
 
-ADD entrypoint.sh /u01/app/oracle/middleware/
+ADD entrypoint.sh /u02/app/oracle/product/fmw/
 
-RUN [ "chmod", "a+x", "/u01/app/oracle/middleware/change_weblogic_password.sh", "/u01/app/oracle/middleware/entrypoint.sh" ]
+RUN [ "chmod", "a+x", "/u02/app/oracle/product/fmw/change_weblogic_password.sh", "/u02/app/oracle/product/fmw/entrypoint.sh" ]
 
-ENTRYPOINT [ "/u01/app/oracle/middleware/entrypoint.sh", "AdminServer" ]
+ENTRYPOINT [ "/u02/app/oracle/product/fmw/entrypoint.sh", "AdminServer" ]
 
 EXPOSE 7001
