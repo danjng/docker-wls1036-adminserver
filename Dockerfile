@@ -4,7 +4,7 @@
 # http://<IP>:7001/console/
 # docker run -d -p <IP>:7001:7001 danjng/wls1036-adminserver <newpassword>
 
-FROM danjng/wls1036
+FROM danjng/docker-wls1036
 MAINTAINER Daniel Ng "danjng@gmail.com"
 
 ADD basicWLSDomain_AdminServer.py /u02/app/oracle/product/fmw/wlserver_10.3/common/templates/scripts/wlst/
