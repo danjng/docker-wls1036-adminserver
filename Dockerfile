@@ -8,6 +8,7 @@
 FROM danjng/wls1036
 MAINTAINER Daniel Ng "danjng@gmail.com"
 
+USER root
 ADD basicWLSDomain_AdminServer.py /u02/app/oracle/product/fmw/wlserver_10.3/common/templates/scripts/wlst/
 
 RUN /bin/bash -c "source /u02/app/oracle/product/fmw/wlserver_10.3/server/bin/setWLSEnv.sh" \
