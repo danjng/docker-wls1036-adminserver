@@ -5,8 +5,7 @@
 # docker run -d -p <IP>:7001:7001 danjng/wls1036-adminserver <newpassword>
 # docker run -it -p 7001:7001 <Container ID> <password>
 
-#FROM danjng/wls1036
-FROM danjng/wls1036-image
+FROM danjng/wls1036
 MAINTAINER Daniel Ng "danjng@gmail.com"
 
 USER root
